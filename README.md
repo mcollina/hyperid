@@ -1,6 +1,10 @@
 # hyperid
 
-Uber-fast unique id generation, for Node.js and the browser
+[![Build
+Status](https://travis-ci.org/mcollina/hyperid.svg)](https://travis-ci.org/mcollina/hyperid)
+
+Uber-fast unique id generation, for Node.js and the browser.
+Here are the benchmarks:
 
 ```
 hashids process.hrtime x 27,255 ops/sec ±0.71% (91 runs sampled)
