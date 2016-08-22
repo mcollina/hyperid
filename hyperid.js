@@ -10,7 +10,7 @@ function hyperid () {
   var id = baseId(generate.uuid)
 
   function generate () {
-    var result = id + '/' + count++
+    var result = id + count++
 
     if (count === maxInt) {
       generate.uuid = uuid.v4()
@@ -27,7 +27,7 @@ function hyperid () {
 }
 
 function baseId (id) {
-  return new Buffer(uuid.parse(id)).toString('base64')
+  return new Buffer(uuid.parse(id)).toString('base64').replace(/==$/, '/')
 }
 
 function decode (id) {
@@ -38,7 +38,7 @@ function decode (id) {
   }
 
   const result = {
-    uuid: uuid.unparse(new Buffer(a[1], 'base64')),
+    uuid: uuid.unparse(new Buffer(a[1] + '==', 'base64')),
     count: parseInt(a[2])
   }
 
