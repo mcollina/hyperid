@@ -4,7 +4,7 @@
   "description": "Uber-fast unique id generation, for Node.js and the browser",
   "main": "hyperid",
   "scripts": {
-    "test": "standard && tape test.js | tap-spec",
+    "test": "standard && tape test.js uniqueness.js | tap-spec",
     "browser": "zuul --ui tape --local 8080 test.js"
   },
   "repository": {
@@ -24,6 +24,7 @@
   "homepage": "https://github.com/mcollina/hyperid#readme",
   "devDependencies": {
     "benchmark": "^2.1.1",
+    "bloomfilter": "0.0.16",
     "hashids": "^1.1.0",
     "nid": "^0.3.2",
     "pre-commit": "^1.1.3",

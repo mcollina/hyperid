@@ -2,7 +2,6 @@
 
 const hyperid = require('.')
 const test = require('tape')
-const maxInt = Math.pow(2, 31) - 1
 
 test('generating unique ids', function (t) {
   t.plan(1)
@@ -10,7 +9,7 @@ test('generating unique ids', function (t) {
   const instance = hyperid()
   const ids = []
 
-  for (var i = 0; i < maxInt * 10; i += Math.ceil(Math.random() * maxInt / 100)) {
+  for (var i = 0; i < 2048; i++) {
     const id = instance()
 
     if (ids.indexOf(id) >= 0) {
