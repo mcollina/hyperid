@@ -34,7 +34,7 @@ suite.add('uuid.v4', function () {
 })
 
 suite.add('uuid.v1', function () {
-  uuid.v4()
+  uuid.v1()
 })
 
 suite.add('hyperid', function () {
