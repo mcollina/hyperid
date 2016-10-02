@@ -1,6 +1,6 @@
 {
   "name": "hyperid",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Uber-fast unique id generation, for Node.js and the browser",
   "main": "hyperid",
   "scripts": {
