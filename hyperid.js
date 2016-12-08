@@ -9,7 +9,7 @@ function hyperid () {
   generate.uuid = uuid.v4()
   var id = baseId(generate.uuid)
 
-  function generate (fixedLength = false) {
+  function generate (fixedLength) {
     var result = fixedLength
       ? id + pad(count++)
       : id + count++
