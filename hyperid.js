@@ -3,13 +3,13 @@
 const uuid = require('uuid')
 const maxInt = Math.pow(2, 31) - 1
 
-function hyperid () {
+function hyperid (fixedLength) {
   var count = 0
 
   generate.uuid = uuid.v4()
   var id = baseId(generate.uuid)
 
-  function generate (fixedLength) {
+  function generate () {
     var result = fixedLength
       ? id + pad(count++)
       : id + count++
