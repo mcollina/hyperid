@@ -37,8 +37,12 @@ suite.add('uuid.v1', function () {
   uuid.v1()
 })
 
-suite.add('hyperid', function () {
+suite.add('hyperid - variable length', function () {
   hyperid()
+})
+
+suite.add('hyperid - fixed length', function () {
+  hyperid(true)
 })
 
 suite.on('cycle', cycle)

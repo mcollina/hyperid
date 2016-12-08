@@ -44,9 +44,11 @@ console.log(hyperid.decode(instance()))
 
 Returns a function to generate unique ids.
 
-### instance()
+### instance(fixedLength)
 
 Returns an unique id.
+If `fixedLength` is passed in as `true` then the generated id will always be 33
+characters in length, by default `fixedLength` is `false`.
 
 ### instance.uuid
 
