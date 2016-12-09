@@ -7,14 +7,17 @@ Uber-fast unique id generation, for Node.js and the browser.
 Here are the benchmarks:
 
 ```
-hashids process.hrtime x 27,255 ops/sec ±0.71% (91 runs sampled)
-hashids counter x 55,038 ops/sec ±1.32% (88 runs sampled)
-shortid x 33,322 ops/sec ±2.77% (75 runs sampled)
-nid x 1,027,557 ops/sec ±1.08% (86 runs sampled)
-uuid.v4 x 342,969 ops/sec ±1.37% (89 runs sampled)
-uuid.v1 x 316,735 ops/sec ±3.56% (83 runs sampled)
-hyperid x 9,131,590 ops/sec ±4.83% (73 runs sampled)
+hashids process.hrtime x 32,750 ops/sec ±0.65% (89 runs sampled)
+hashids counter x 67,476 ops/sec ±0.66% (90 runs sampled)
+shortid x 55,419 ops/sec ±2.09% (87 runs sampled)
+nid x 578,914 ops/sec ±0.63% (96 runs sampled)
+uuid.v4 x 510,042 ops/sec ±1.85% (91 runs sampled)
+uuid.v1 x 2,293,920 ops/sec ±0.53% (95 runs sampled)
+hyperid - variable length x 11,888,473 ops/sec ±1.08% (87 runs sampled)
+hyperid - fixed length x 11,049,988 ops/sec ±3.78% (83 runs sampled)
 ```
+
+_Note:_ Benchmark run with Intel i7-4810MQ @ 2.80GHz using Node v7.2.0
 
 ## Install
 
@@ -40,9 +43,11 @@ console.log(hyperid.decode(instance()))
 
 ## API
 
-### hyperid()
+### hyperid(fixedLength)
 
 Returns a function to generate unique ids.
+If `fixedLength` is passed in as `true` the function will always generate an id
+that is 33 characters in length, by default `fixedLength` is `false`.
 
 ### instance()
 
