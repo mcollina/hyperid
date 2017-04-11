@@ -43,11 +43,12 @@ console.log(hyperid.decode(instance()))
 
 ## API
 
-### hyperid(fixedLength)
+### hyperid([options])
 
-Returns a function to generate unique ids.
-If `fixedLength` is passed in as `true` the function will always generate an id
-that is 33 characters in length, by default `fixedLength` is `false`.
+Returns a function to generate unique ids.  
+If `{ fixedLength: true }` is passed in, the function will always generate an id
+that is 33 characters in length, by default `fixedLength` is `false`.  
+If `{ urlSafe: true }` is passed in, the function will generate url safe ids.
 
 ### instance()
 
@@ -59,9 +60,10 @@ The uuid used to generate the ids, it will change over time.
 It is regenerated every `Math.pow(2, 31) - 1` to keep the integer a SMI
 (a V8 optimization).
 
-### hyperid.decode(id)
+### hyperid.decode(id, [options])
 
-Decode the unique id into its two components, a `uuid` and a counter.
+Decode the unique id into its two components, a `uuid` and a counter.  
+If you are generating *url safe* ids, you must pass `{ urlSafe: true }` as option.  
 It returns:
 
 ```js
