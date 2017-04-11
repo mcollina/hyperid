@@ -4,9 +4,15 @@ const uuid = require('uuid')
 const maxInt = Math.pow(2, 31) - 1
 
 function hyperid (opts) {
-  opts = opts || {}
-  var urlSafe = !!opts.urlSafe
-  var fixedLength = !!opts.fixedLength
+  var fixedLength = false
+  var urlSafe = false
+  if (typeof opts === 'boolean') {
+    fixedLength = opts
+  } else {
+    opts = opts || {}
+    urlSafe = !!opts.urlSafe
+    fixedLength = !!opts.fixedLength
+  }
 
   var count = 0
 

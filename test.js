@@ -26,6 +26,23 @@ test('generating unique ids', function (t) {
 test('generating unique ids are correct length when fixedLength set to true', function (t) {
   t.plan(1)
 
+  const instance = hyperid(true)
+
+  for (var i = 0; i < 1000000; i++) {
+    const id = instance()
+
+    if (id.length !== 33) {
+      t.fail('incorrect length')
+      return
+    }
+  }
+
+  t.pass('1000000 id of 33 characters generated')
+})
+
+test('generating unique ids are correct length when fixedLength set to true (as option object)', function (t) {
+  t.plan(1)
+
   const instance = hyperid({ fixedLength: true })
 
   for (var i = 0; i < 1000000; i++) {
