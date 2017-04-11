@@ -43,9 +43,14 @@ console.log(hyperid.decode(instance()))
 
 ## API
 
-### hyperid([options])
+### hyperid([fixedLength || options])
 
 Returns a function to generate unique ids.  
+The function can accept one of the following parameters:
+- `fixedLength: Boolean`  
+If *fixedLength* is `true` the function will always generate an id
+that is 33 characters in length, by default `fixedLength` is `false`.  
+- `options: Object`  
 If `{ fixedLength: true }` is passed in, the function will always generate an id
 that is 33 characters in length, by default `fixedLength` is `false`.  
 If `{ urlSafe: true }` is passed in, the function will generate url safe ids.
