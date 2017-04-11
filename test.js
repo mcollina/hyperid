@@ -26,7 +26,7 @@ test('generating unique ids', function (t) {
 test('generating unique ids are correct length when fixedLength set to true', function (t) {
   t.plan(1)
 
-  const instance = hyperid(true)
+  const instance = hyperid({ fixedLength: true })
 
   for (var i = 0; i < 1000000; i++) {
     const id = instance()
@@ -57,4 +57,24 @@ test('decode uuids', function (t) {
     uuid: instance.uuid,
     count: 1
   }, 'decode from an instance')
+})
+
+test('generate url safe ids', function (t) {
+  t.plan(1)
+
+  const instance = hyperid({ urlSafe: true })
+  const id = instance()
+
+  t.equal(encodeURIComponent(id), id)
+})
+
+test('decode url safe ids', function (t) {
+  t.plan(1)
+
+  const instance = hyperid({ urlSafe: true })
+
+  t.deepEqual(hyperid.decode(instance(), { urlSafe: true }), {
+    uuid: instance.uuid,
+    count: 0
+  }, 'decode')
 })

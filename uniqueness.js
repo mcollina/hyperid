@@ -35,3 +35,34 @@ test('uniqueness', function (t) {
   t.pass(conflicts + ' bloom filter conflicts')
   t.ok(conflicts / ids < 0.001, '0,1% conflict ratio using bloom filters')
 })
+
+test('url safe uniqueness', function (t) {
+  t.plan(3)
+
+  const instance = hyperid({ urlSafe: true })
+  const bloom = new BloomFilter(
+    32 * 4096 * 4096, // number of bits to allocate.
+    16                // number of hash functions.
+  )
+
+  var conflicts = 0
+  var ids = 0
+
+  const max = maxInt * 2
+
+  for (var i = 0; i < max; i += Math.ceil(Math.random() * 4096)) {
+    const id = instance()
+
+    if (bloom.test(id)) {
+      conflicts++
+    }
+
+    ids++
+
+    bloom.add(id)
+  }
+
+  t.pass(ids + ' id generated')
+  t.pass(conflicts + ' bloom filter conflicts')
+  t.ok(conflicts / ids < 0.001, '0,1% conflict ratio using bloom filters')
+})
