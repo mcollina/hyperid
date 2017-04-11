@@ -3,11 +3,15 @@
 const uuid = require('uuid')
 const maxInt = Math.pow(2, 31) - 1
 
-function hyperid (fixedLength) {
+function hyperid (opts) {
+  opts = opts || {}
+  var urlSafe = !!opts.urlSafe
+  var fixedLength = !!opts.fixedLength
+
   var count = 0
 
   generate.uuid = uuid.v4()
-  var id = baseId(generate.uuid)
+  var id = baseId(generate.uuid, urlSafe)
 
   function generate () {
     var result = fixedLength
@@ -16,7 +20,7 @@ function hyperid (fixedLength) {
 
     if (count === maxInt) {
       generate.uuid = uuid.v4()
-      id = baseId(generate.uuid) // rebase
+      id = baseId(generate.uuid, urlSafe) // rebase
       count = 0
     }
 
@@ -40,11 +44,22 @@ function pad (count) {
   if (count < 1000000000) return `0${count}`
 }
 
-function baseId (id) {
-  return new Buffer(uuid.parse(id)).toString('base64').replace(/==$/, '/')
+function baseId (id, urlSafe) {
+  var base64Id = new Buffer(uuid.parse(id)).toString('base64')
+  if (urlSafe) {
+    return base64Id.replace(/\+/g, '_').replace(/\//g, '-').replace(/==$/, '-')
+  }
+  return base64Id.replace(/==$/, '/')
 }
 
-function decode (id) {
+function decode (id, opts) {
+  opts = opts || {}
+  var urlSafe = !!opts.urlSafe
+
+  if (urlSafe) {
+    id = id.replace(/-/g, '/').replace(/_/g, '+')
+  }
+
   const a = id.match(/(.*)+\/(\d+)+$/)
 
   if (!a) {
