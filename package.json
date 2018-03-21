@@ -32,10 +32,10 @@
     "standard": "^11.0.0",
     "tap-spec": "^4.1.1",
     "tape": "^4.9.0",
-    "uuid": "^3.0.0",
     "zuul": "^3.11.1"
   },
   "dependencies": {
+    "uuid": "^3.0.0",
     "uuid-parse": "^1.0.0"
   }
 }

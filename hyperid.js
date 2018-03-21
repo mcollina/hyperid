@@ -26,7 +26,7 @@ function hyperid (opts) {
       : id + count++
 
     if (count === maxInt) {
-      generate.uuid = uuid.v4()
+      generate.uuid = uuid()
       id = baseId(generate.uuid, urlSafe) // rebase
       count = 0
     }
