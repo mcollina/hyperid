@@ -11,7 +11,7 @@ test('uniqueness', function (t) {
   const instance = hyperid()
   const bloom = new BloomFilter(
     32 * 4096 * 4096, // number of bits to allocate.
-    16                // number of hash functions.
+    16 // number of hash functions.
   )
 
   var conflicts = 0
@@ -42,7 +42,7 @@ test('url safe uniqueness', function (t) {
   const instance = hyperid({ urlSafe: true })
   const bloom = new BloomFilter(
     32 * 4096 * 4096, // number of bits to allocate.
-    16                // number of hash functions.
+    16 // number of hash functions.
   )
 
   var conflicts = 0

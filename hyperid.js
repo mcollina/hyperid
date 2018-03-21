@@ -1,6 +1,7 @@
 'use strict'
 
-const uuid = require('uuid')
+const uuid = require('uuid/v4')
+const parser = require('uuid-parse')
 const maxInt = Math.pow(2, 31) - 1
 
 function hyperid (opts) {
@@ -16,7 +17,7 @@ function hyperid (opts) {
 
   var count = 0
 
-  generate.uuid = uuid.v4()
+  generate.uuid = uuid()
   var id = baseId(generate.uuid, urlSafe)
 
   function generate () {
@@ -51,7 +52,7 @@ function pad (count) {
 }
 
 function baseId (id, urlSafe) {
-  var base64Id = new Buffer(uuid.parse(id)).toString('base64')
+  var base64Id = Buffer.from(parser.parse(id)).toString('base64')
   if (urlSafe) {
     return base64Id.replace(/\+/g, '_').replace(/\//g, '-').replace(/==$/, '-')
   }
@@ -73,7 +74,7 @@ function decode (id, opts) {
   }
 
   const result = {
-    uuid: uuid.unparse(new Buffer(a[1] + '==', 'base64')),
+    uuid: parser.unparse(Buffer.from(a[1] + '==', 'base64')),
     count: parseInt(a[2])
   }
 
