@@ -4,8 +4,9 @@
   "description": "Uber-fast unique id generation, for Node.js and the browser",
   "main": "hyperid",
   "scripts": {
-    "test": "standard && tape test.js uniqueness.js | tap-spec",
-    "browser": "zuul --ui tape --local 8080 test.js"
+    "typescript": "tsc --project ./test/tsconfig.json",
+    "test": "standard && tape test/test.js test/uniqueness.js | tap-spec && npm run typescript",
+    "browser": "zuul --ui tape --local 8080 test/test.js"
   },
   "repository": {
     "type": "git",
