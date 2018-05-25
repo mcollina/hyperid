@@ -35,7 +35,7 @@
     "zuul": "^3.11.1"
   },
   "dependencies": {
-    "uuid": "^3.0.0",
+    "uuid": "^3.2.1",
     "uuid-parse": "^1.0.0"
   }
 }
