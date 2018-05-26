@@ -1,6 +1,6 @@
 'use strict'
 
-const hyperid = require('.')
+const hyperid = require('..')
 const test = require('tape')
 const BloomFilter = require('bloomfilter').BloomFilter
 const maxInt = Math.pow(2, 31) - 1

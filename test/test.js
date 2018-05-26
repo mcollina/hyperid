@@ -1,6 +1,6 @@
 'use strict'
 
-const hyperid = require('.')
+const hyperid = require('..')
 const test = require('tape')
 
 test('generating unique ids', function (t) {
