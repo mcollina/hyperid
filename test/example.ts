@@ -1,4 +1,4 @@
-import hyperid from '..'
+import * as hyperid from '..'
 
 const urlSafeInstance = hyperid({ fixedLength: false, urlSafe: true })
 const fixedLengthInstance = hyperid(true)
