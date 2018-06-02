@@ -22,4 +22,4 @@ declare namespace hyperid {
   }
 }
 
-export default hyperid
+export = hyperid
