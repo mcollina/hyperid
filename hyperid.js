@@ -40,15 +40,15 @@ function hyperid (opts) {
 }
 
 function pad (count) {
-  if (count < 10) return `000000000${count}`
-  if (count < 100) return `00000000${count}`
-  if (count < 1000) return `0000000${count}`
-  if (count < 10000) return `000000${count}`
-  if (count < 100000) return `00000${count}`
-  if (count < 1000000) return `0000${count}`
-  if (count < 10000000) return `000${count}`
-  if (count < 100000000) return `00${count}`
-  if (count < 1000000000) return `0${count}`
+  if (count < 10) return '000000000' + count
+  if (count < 100) return '00000000' + count
+  if (count < 1000) return '0000000' + count
+  if (count < 10000) return '000000' + count
+  if (count < 100000) return '00000' + count
+  if (count < 1000000) return '0000' + count
+  if (count < 10000000) return '000' + count
+  if (count < 100000000) return '00' + count
+  if (count < 1000000000) return '0' + count
 }
 
 function baseId (id, urlSafe) {
