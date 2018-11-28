@@ -14,7 +14,7 @@ declare namespace hyperid {
     uuid: string
   }
 
-  type decode = (id: string) => hyperid.IdObject
+  type decode = (id: string, opts?: hyperid.Options) => hyperid.IdObject
 
   interface IdObject {
     uuid: string
