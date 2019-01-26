@@ -25,14 +25,14 @@
   "devDependencies": {
     "benchmark": "^2.1.4",
     "bloomfilter": "0.0.18",
-    "hashids": "^1.1.4",
+    "hashids": "^1.2.2",
     "nid": "^0.3.2",
     "pre-commit": "^1.2.2",
-    "shortid": "^2.2.8",
+    "shortid": "^2.2.14",
     "standard": "^12.0.0",
     "tap-dot": "^2.0.0",
-    "tape": "^4.9.1",
-    "typescript": "^2.8.3"
+    "tape": "^4.9.2",
+    "typescript": "^2.9.2"
   },
   "dependencies": {
     "uuid": "^3.3.2",
