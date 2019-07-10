@@ -1,9 +1,9 @@
 'use strict'
 
-const uuid = require('uuid/v4')
-const parser = require('uuid-parse')
-const maxInt = Math.pow(2, 31) - 1
-const Buffer = require('buffer').Buffer
+var uuid = require('uuid/v4')
+var parser = require('uuid-parse')
+var maxInt = Math.pow(2, 31) - 1
+var Buffer = require('buffer').Buffer
 
 function hyperid (opts) {
   var fixedLength = false
