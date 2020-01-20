@@ -28,14 +28,14 @@
     "hashids": "^1.2.2",
     "nid": "^0.3.2",
     "pre-commit": "^1.2.2",
-    "shortid": "^2.2.14",
-    "standard": "^12.0.0",
+    "shortid": "^2.2.15",
+    "standard": "^14.0.0",
     "tap-dot": "^2.0.0",
-    "tape": "^4.9.2",
+    "tape": "^4.13.0",
     "typescript": "^2.9.2"
   },
   "dependencies": {
-    "uuid": "^3.3.2",
-    "uuid-parse": "^1.0.0"
+    "uuid": "^3.4.0",
+    "uuid-parse": "^1.1.0"
   }
 }
