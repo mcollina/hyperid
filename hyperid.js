@@ -68,15 +68,19 @@ function decode (id, opts) {
     id = id.replace(/-/g, '/').replace(/_/g, '+')
   }
 
-  const a = id.match(/(.*)+\/(\d+)+$/)
-
-  if (!a) {
+  const lastSlashIndex = id.lastIndexOf('/')
+  if (lastSlashIndex === -1) {
+    return null
+  }
+  const uuidPart = id.substring(0, lastSlashIndex)
+  const countPart = Number(id.substring(lastSlashIndex + 1))
+  if (!uuidPart || isNaN(countPart)) {
     return null
   }
 
   const result = {
-    uuid: parser.unparse(Buffer.from(a[1] + '==', 'base64')),
-    count: parseInt(a[2])
+    uuid: parser.unparse(Buffer.from(uuidPart + '==', 'base64')),
+    count: countPart
   }
 
   return result
