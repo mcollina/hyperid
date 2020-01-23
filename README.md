@@ -7,17 +7,17 @@ Uber-fast unique id generation, for Node.js and the browser.
 Here are the benchmarks:
 
 ```
-hashids process.hrtime x 161,779 ops/sec ±3.25% (78 runs sampled)
-hashids counter x 327,099 ops/sec ±2.45% (76 runs sampled)
-shortid x 26,225 ops/sec ±3.90% (72 runs sampled)
-nid x 864,834 ops/sec ±2.94% (83 runs sampled)
-uuid.v4 x 269,960 ops/sec ±2.42% (81 runs sampled)
-uuid.v1 x 1,687,472 ops/sec ±1.38% (85 runs sampled)
-hyperid - variable length x 6,121,953 ops/sec ±2.66% (76 runs sampled)
-hyperid - fixed length x 6,331,137 ops/sec ±2.31% (79 runs sampled)
+hashids process.hrtime x 111,334 ops/sec ±12.05% (68 runs sampled)
+hashids counter x 267,594 ops/sec ±7.22% (74 runs sampled)
+shortid x 27,396 ops/sec ±2.59% (82 runs sampled)
+nid x 890,727 ops/sec ±2.52% (85 runs sampled)
+uuid.v4 x 217,132 ops/sec ±3.13% (75 runs sampled)
+uuid.v1 x 941,868 ops/sec ±1.69% (89 runs sampled)
+hyperid - variable length x 7,944,465 ops/sec ±2.70% (87 runs sampled)
+hyperid - fixed length x 9,175,561 ops/sec ±1.42% (80 runs sampled)
 ```
 
-_Note:_ Benchmark run with 1,3 GHz Intel Core i5 using Node v8.10.0
+_Note:_ Benchmark run with 1,3 GHz Intel Core i5 using Node v12.13.0
 
 ## Install
 
