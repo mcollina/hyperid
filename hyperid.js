@@ -16,12 +16,11 @@ function hyperid (opts) {
     fixedLength = !!opts.fixedLength
   }
 
-  var count = opts.startFrom || 0
-
   generate.uuid = uuid()
   generate.decode = decode
 
   var id = baseId(generate.uuid, urlSafe)
+  var count = opts.startFrom || 0
 
   return generate
 
