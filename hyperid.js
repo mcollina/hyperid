@@ -25,7 +25,7 @@ function hyperid (opts) {
   if (isNaN(count) || !(maxInt > count && count >= 0)) {
     throw new Error([
       `when passed, opts.startFrom must be a number between 0 and ${maxInt}.`,
-      'Only the integer part effects.',
+      'Only the integer part matters.',
       `- got: ${opts.startFrom}`
     ].join('\n'))
   }
