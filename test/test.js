@@ -95,3 +95,39 @@ test('decode url safe ids', function (t) {
     count: 0
   }, 'decode')
 })
+
+test('injecting opts.startFrom', function (t) {
+  t.plan(1)
+
+  const instance = hyperid({ startFrom: 999999999 })
+  const id = instance()
+
+  id.endsWith('999999999')
+    ? t.pass('generated as expected')
+    : t.fail('did not use injected id')
+})
+
+test('opts.fixedLength - passed 999999999 - pads correctly', function (t) {
+  t.plan(1)
+
+  const instance = hyperid({ startFrom: 999999999 })
+  instance()
+  const id = instance()
+
+  id.endsWith('1000000000')
+    ? t.pass('generated as expected')
+    : t.fail('did not use injected id')
+})
+
+test('opts.fixedLength - passed invalid value - throws a friendly error', function (t) {
+  t.plan(1)
+
+  try {
+    hyperid({ startFrom: 'not a number' })
+    t.fail('did not throw an expected error')
+  } catch (e) {
+    e.message.match(/startFrom must be a number/)
+      ? t.pass('thrown as expected')
+      : t.fail('this is not the error you\'re looking for')
+  }
+})

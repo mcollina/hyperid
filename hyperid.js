@@ -16,10 +16,21 @@ function hyperid (opts) {
     fixedLength = !!opts.fixedLength
   }
 
-  var count = 0
-
   generate.uuid = uuid()
+  generate.decode = decode
+
   var id = baseId(generate.uuid, urlSafe)
+  var count = Math.floor(opts.startFrom || 0)
+
+  if (isNaN(count) || !(maxInt > count && count >= 0)) {
+    throw new Error([
+      `when passed, opts.startFrom must be a number between 0 and ${maxInt}.`,
+      'Only the integer part matters.',
+      `- got: ${opts.startFrom}`
+    ].join('\n'))
+  }
+
+  return generate
 
   function generate () {
     var result = fixedLength
@@ -34,10 +45,6 @@ function hyperid (opts) {
 
     return result
   }
-
-  generate.decode = decode
-
-  return generate
 }
 
 function pad (count) {
@@ -50,6 +57,7 @@ function pad (count) {
   if (count < 10000000) return '000' + count
   if (count < 100000000) return '00' + count
   if (count < 1000000000) return '0' + count
+  return count
 }
 
 function baseId (id, urlSafe) {
