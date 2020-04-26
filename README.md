@@ -54,6 +54,7 @@ that is 33 characters in length, by default `fixedLength` is `false`.
 If `{ fixedLength: true }` is passed in, the function will always generate an id
 that is 33 characters in length, by default `fixedLength` is `false`.  
 If `{ urlSafe: true }` is passed in, the function will generate url safe ids.
+If `{ startFrom: <int> }` is passed in, the first counter will start from that number, which must be beteen 0 and 2147483647.
 
 ### instance()
 

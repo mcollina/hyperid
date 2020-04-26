@@ -20,7 +20,15 @@ function hyperid (opts) {
   generate.decode = decode
 
   var id = baseId(generate.uuid, urlSafe)
-  var count = opts.startFrom || 0
+  var count = Math.floor(opts.startFrom || 0)
+
+  if (isNaN(count) || !(maxInt > count && count >= 0)) {
+    throw new Error([
+      `when passed, opts.startFrom must be a number between 0 and ${maxInt}.`,
+      'Only the integer part effects.',
+      `- got: ${opts.startFrom}`
+    ].join('\n'))
+  }
 
   return generate
 
