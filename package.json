@@ -26,13 +26,13 @@
     "benchmark": "^2.1.4",
     "bloomfilter": "0.0.18",
     "hashids": "^1.2.2",
-    "nid": "^0.3.2",
+    "nid": "^1.1.0",
     "pre-commit": "^1.2.2",
     "shortid": "^2.2.15",
     "standard": "^14.0.0",
     "tap-dot": "^2.0.0",
-    "tape": "^4.13.0",
-    "typescript": "^2.9.2"
+    "tape": "^5.0.0",
+    "typescript": "^3.8.3"
   },
   "dependencies": {
     "uuid": "^3.4.0",
