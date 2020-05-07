@@ -3,6 +3,11 @@
   "version": "2.0.4",
   "description": "Uber-fast unique id generation, for Node.js and the browser",
   "main": "hyperid",
+  "files": [
+    "hyperid.js",
+    "index.d.ts",
+    "test"
+  ],
   "scripts": {
     "typescript": "tsc --project ./test/tsconfig.json",
     "test": "standard && tape test/test.js test/uniqueness.js | tap-dot && npm run typescript"
