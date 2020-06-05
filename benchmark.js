@@ -4,8 +4,14 @@ const benchmark = require('benchmark')
 const Hashids = require('hashids')
 const shortid = require('shortid')
 const nid = require('nid')
+const crypto = require('crypto')
 const uuid = require('uuid')
-const hyperid = require('.')()
+const hyperid = require('.')
+
+const hyperIdSafeUrlInstance = hyperid({
+  urlSafe: true
+})
+const hyperIdInstance = hyperid()
 
 const suite = new benchmark.Suite()
 
@@ -25,6 +31,10 @@ suite.add('shortid', function () {
   shortid()
 })
 
+suite.add('crypto.random', function () {
+  crypto.randomBytes(33).toString('hex')
+})
+
 suite.add('nid', function () {
   nid()
 })
@@ -38,11 +48,14 @@ suite.add('uuid.v1', function () {
 })
 
 suite.add('hyperid - variable length', function () {
-  hyperid()
+  hyperIdInstance()
 })
 
 suite.add('hyperid - fixed length', function () {
-  hyperid(true)
+  hyperIdInstance(true)
+})
+suite.add('hyperid - fixed length, url safe', function () {
+  hyperIdSafeUrlInstance(true)
 })
 
 suite.on('cycle', cycle)
