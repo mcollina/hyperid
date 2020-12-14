@@ -62,10 +62,17 @@ function pad (count) {
 
 function baseId (id, urlSafe) {
   var base64Id = Buffer.from(parser.parse(id)).toString('base64')
+  var l = base64Id.length
   if (urlSafe) {
-    return base64Id.replace(/\+/g, '_').replace(/\//g, '-').replace(/==$/, '-')
+    if (base64Id[l - 2] === '=' && base64Id[l - 1] === '=') {
+      base64Id = base64Id.substr(0, l - 2) + '-'
+    }
+    return base64Id.replace(/\+/g, '_').replace(/\//g, '-')
   }
-  return base64Id.replace(/==$/, '/')
+  if (base64Id[l - 2] === '=' && base64Id[l - 1] === '=') {
+    return base64Id.substr(0, l - 2) + '/'
+  }
+  return base64Id
 }
 
 function decode (id, opts) {
