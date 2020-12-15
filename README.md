@@ -1,7 +1,6 @@
 # hyperid
 
-[![Build
-Status](https://travis-ci.org/mcollina/hyperid.svg)](https://travis-ci.org/mcollina/hyperid)
+[![Build Status](https://img.shields.io/github/workflow/status/mcollina/hyperid/CI)](https://github.com/mcollina/hyperid/actions)
 
 Uber-fast unique id generation, for Node.js and the browser.
 Here are the benchmarks:
