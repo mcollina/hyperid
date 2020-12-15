@@ -6,6 +6,7 @@ const shortid = require('shortid')
 const nid = require('nid')
 const crypto = require('crypto')
 const uuid = require('uuid')
+const { nanoid } = require('nanoid')
 const hyperid = require('.')
 
 const hyperIdSafeUrlInstance = hyperid({
@@ -45,6 +46,10 @@ suite.add('uuid.v4', function () {
 
 suite.add('uuid.v1', function () {
   uuid.v1()
+})
+
+suite.add('nanoid', function () {
+  nanoid()
 })
 
 suite.add('hyperid - variable length', function () {
