@@ -6,8 +6,8 @@ const maxInt = Math.pow(2, 31) - 1
 const Buffer = require('buffer').Buffer
 
 function hyperid (opts) {
-  var fixedLength = false
-  var urlSafe = false
+  let fixedLength = false
+  let urlSafe = false
   if (typeof opts === 'boolean') {
     fixedLength = opts
   } else {
@@ -19,8 +19,8 @@ function hyperid (opts) {
   generate.uuid = uuidv4()
   generate.decode = decode
 
-  var id = baseId(generate.uuid, urlSafe)
-  var count = Math.floor(opts.startFrom || 0)
+  let id = baseId(generate.uuid, urlSafe)
+  let count = Math.floor(opts.startFrom || 0)
 
   if (isNaN(count) || !(maxInt > count && count >= 0)) {
     throw new Error([
@@ -33,7 +33,7 @@ function hyperid (opts) {
   return generate
 
   function generate () {
-    var result = fixedLength
+    const result = fixedLength
       ? id + pad(count++)
       : id + count++
 
@@ -61,8 +61,8 @@ function pad (count) {
 }
 
 function baseId (id, urlSafe) {
-  var base64Id = Buffer.from(parser.parse(id)).toString('base64')
-  var l = base64Id.length
+  let base64Id = Buffer.from(parser.parse(id)).toString('base64')
+  const l = base64Id.length
   if (urlSafe) {
     if (base64Id[l - 2] === '=' && base64Id[l - 1] === '=') {
       base64Id = base64Id.substr(0, l - 2) + '-'
@@ -77,7 +77,7 @@ function baseId (id, urlSafe) {
 
 function decode (id, opts) {
   opts = opts || {}
-  var urlSafe = !!opts.urlSafe
+  const urlSafe = !!opts.urlSafe
 
   if (urlSafe) {
     id = id.replace(/-/g, '/').replace(/_/g, '+')
