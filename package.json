@@ -41,7 +41,7 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "uuid": "^3.4.0",
+    "uuid": "^8.3.2",
     "uuid-parse": "^1.1.0"
   }
 }
