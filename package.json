@@ -30,7 +30,7 @@
   "devDependencies": {
     "benchmark": "^2.1.4",
     "bloomfilter": "0.0.18",
-    "hashids": "^1.2.2",
+    "hashids": "^2.2.8",
     "nanoid": "^3.1.20",
     "nid": "^1.1.0",
     "pre-commit": "^1.2.2",
