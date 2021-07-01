@@ -14,12 +14,12 @@ test('uniqueness', function (t) {
     16 // number of hash functions.
   )
 
-  var conflicts = 0
-  var ids = 0
+  let conflicts = 0
+  let ids = 0
 
   const max = maxInt * 2
 
-  for (var i = 0; i < max; i += Math.ceil(Math.random() * 4096)) {
+  for (let i = 0; i < max; i += Math.ceil(Math.random() * 4096)) {
     const id = instance()
 
     if (bloom.test(id)) {
@@ -45,12 +45,12 @@ test('url safe uniqueness', function (t) {
     16 // number of hash functions.
   )
 
-  var conflicts = 0
-  var ids = 0
+  let conflicts = 0
+  let ids = 0
 
   const max = maxInt * 2
 
-  for (var i = 0; i < max; i += Math.ceil(Math.random() * 4096)) {
+  for (let i = 0; i < max; i += Math.ceil(Math.random() * 4096)) {
     const id = instance()
 
     if (bloom.test(id)) {

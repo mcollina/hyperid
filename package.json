@@ -30,18 +30,18 @@
   "devDependencies": {
     "benchmark": "^2.1.4",
     "bloomfilter": "0.0.18",
-    "hashids": "^1.2.2",
+    "hashids": "^2.2.8",
     "nanoid": "^3.1.20",
     "nid": "^1.1.0",
     "pre-commit": "^1.2.2",
     "shortid": "^2.2.15",
-    "standard": "^14.0.0",
+    "standard": "^16.0.3",
     "tap-dot": "^2.0.0",
     "tape": "^5.0.0",
-    "typescript": "^3.8.3"
+    "typescript": "^4.3.4"
   },
   "dependencies": {
-    "uuid": "^3.4.0",
+    "uuid": "^8.3.2",
     "uuid-parse": "^1.1.0"
   }
 }

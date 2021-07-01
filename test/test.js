@@ -9,7 +9,7 @@ test('generating unique ids', function (t) {
   const instance = hyperid()
   const ids = []
 
-  for (var i = 0; i < 2048; i++) {
+  for (let i = 0; i < 2048; i++) {
     const id = instance()
 
     if (ids.indexOf(id) >= 0) {
@@ -28,7 +28,7 @@ test('generating unique ids are correct length when fixedLength set to true', fu
 
   const instance = hyperid(true)
 
-  for (var i = 0; i < 1000000; i++) {
+  for (let i = 0; i < 1000000; i++) {
     const id = instance()
 
     if (id.length !== 33) {
@@ -45,7 +45,7 @@ test('generating unique ids are correct length when fixedLength set to true (as 
 
   const instance = hyperid({ fixedLength: true })
 
-  for (var i = 0; i < 1000000; i++) {
+  for (let i = 0; i < 1000000; i++) {
     const id = instance()
 
     if (id.length !== 33) {
