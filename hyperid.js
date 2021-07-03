@@ -1,6 +1,6 @@
 'use strict'
 
-const { v4: uuidv4 } = require('uuid')
+const uuidv4 = require('./uuid')
 const parser = require('uuid-parse')
 const maxInt = Math.pow(2, 31) - 1
 const Buffer = require('buffer').Buffer

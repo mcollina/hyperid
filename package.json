@@ -43,5 +43,8 @@
   "dependencies": {
     "uuid": "^8.3.2",
     "uuid-parse": "^1.1.0"
+  },
+  "browser": {
+    "./uuid.js": "./uuid-browser.js"
   }
 }
