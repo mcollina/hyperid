@@ -6,6 +6,8 @@
   "files": [
     "hyperid.js",
     "index.d.ts",
+    "uuid.js",
+    "uuid-browser.js",
     "test"
   ],
   "scripts": {
