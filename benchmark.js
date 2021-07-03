@@ -18,6 +18,12 @@ const suite = new benchmark.Suite()
 
 const hashids = new Hashids('mybench')
 
+if (crypto.randomUUID) {
+  suite.add('crypto.randomUUID', function () {
+    crypto.randomUUID()
+  })
+}
+
 suite.add('hashids process.hrtime', function () {
   hashids.encode(process.hrtime())
 })
