@@ -8,6 +8,7 @@ const crypto = require('crypto')
 const uuid = require('uuid')
 const { nanoid } = require('nanoid')
 const hyperid = require('.')
+const napiRsUuid = require('@napi-rs/uuid').v4
 
 const hyperIdSafeUrlInstance = hyperid({
   urlSafe: true
@@ -48,6 +49,10 @@ suite.add('nid', function () {
 
 suite.add('uuid.v4', function () {
   uuid.v4()
+})
+
+suite.add('napiRsUuid.v4', function () {
+  napiRsUuid()
 })
 
 suite.add('uuid.v1', function () {

@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/mcollina/hyperid#readme",
   "devDependencies": {
+    "@napi-rs/uuid": "^0.1.0",
     "benchmark": "^2.1.4",
     "bloomfilter": "0.0.18",
     "hashids": "^2.2.8",
