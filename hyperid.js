@@ -67,7 +67,7 @@ function baseId (id, urlSafe) {
     if (base64Id[l - 2] === '=' && base64Id[l - 1] === '=') {
       base64Id = base64Id.substr(0, l - 2) + '-'
     }
-    return base64Id.replace(/\+/g, '_').replace(/\//g, '-')
+    return base64Id.replace(/\+/g, '-').replace(/\//g, '_')
   }
   if (base64Id[l - 2] === '=' && base64Id[l - 1] === '=') {
     return base64Id.substr(0, l - 2) + '/'
@@ -80,7 +80,11 @@ function decode (id, opts) {
   const urlSafe = !!opts.urlSafe
 
   if (urlSafe) {
-    id = id.replace(/-/g, '/').replace(/_/g, '+')
+    // need to first convert the last minus to slash,
+    // then the remaining to plus
+    id = id.replace(/-([^-]*)$/, '/' + '$1')
+      .replace(/-/g, '+')
+      .replace(/_/g, '/')
   }
 
   const lastSlashIndex = id.lastIndexOf('/')
