@@ -44,9 +44,9 @@
     "typescript": "^4.3.4"
   },
   "dependencies": {
-    "buffer": "^6.0.3",
     "uuid": "^8.3.2",
-    "uuid-parse": "^1.1.0"
+    "uuid-parse": "^1.1.0",
+    "buffer": "^5.2.1"
   },
   "browser": {
     "./uuid.js": "./uuid-browser.js"
