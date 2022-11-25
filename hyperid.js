@@ -3,7 +3,15 @@
 const uuidv4 = require('./uuid')
 const parser = require('uuid-parse')
 const maxInt = Math.pow(2, 31) - 1
-const Buffer = require('buffer/').Buffer
+const Buffer = loadBuffer()
+
+function loadBuffer () {
+  const b = require('buffer')
+  // use third party module if no buffer module
+  return b
+    ? b.Buffer
+    : require('buffer/').Buffer
+}
 
 function hyperid (opts) {
   let fixedLength = false
