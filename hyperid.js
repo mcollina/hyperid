@@ -4,6 +4,7 @@ const uuidv4 = require('./uuid')
 const parser = require('uuid-parse')
 const maxInt = Math.pow(2, 31) - 1
 const Buffer = require('buffer').Buffer
+const base64Padding = Buffer.from('==', 'base64')
 
 function hyperid (opts) {
   let fixedLength = false
@@ -33,46 +34,28 @@ function hyperid (opts) {
   return generate
 
   function generate () {
-    const result = fixedLength
-      ? id + pad(count++)
-      : id + count++
-
+    let result
     if (count === maxInt) {
       generate.uuid = uuidv4()
       id = baseId(generate.uuid, urlSafe) // rebase
       count = 0
     }
-
+    if (fixedLength) {
+      result = id + `0000000000${count}`.slice(-10)
+    } else {
+      result = id + count
+    }
+    count = (count + 1) | 0
     return result
   }
 }
 
-function pad (count) {
-  if (count < 10) return '000000000' + count
-  if (count < 100) return '00000000' + count
-  if (count < 1000) return '0000000' + count
-  if (count < 10000) return '000000' + count
-  if (count < 100000) return '00000' + count
-  if (count < 1000000) return '0000' + count
-  if (count < 10000000) return '000' + count
-  if (count < 100000000) return '00' + count
-  if (count < 1000000000) return '0' + count
-  return count
-}
-
 function baseId (id, urlSafe) {
-  let base64Id = Buffer.from(parser.parse(id)).toString('base64')
-  const l = base64Id.length
+  const base64Id = Buffer.concat([Buffer.from(parser.parse(id)), base64Padding]).toString('base64')
   if (urlSafe) {
-    if (base64Id[l - 2] === '=' && base64Id[l - 1] === '=') {
-      base64Id = base64Id.substr(0, l - 2) + '-'
-    }
-    return base64Id.replace(/\+/g, '-').replace(/\//g, '_')
+    return base64Id.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '-')
   }
-  if (base64Id[l - 2] === '=' && base64Id[l - 1] === '=') {
-    return base64Id.substr(0, l - 2) + '/'
-  }
-  return base64Id
+  return base64Id.replace(/=+$/, '/')
 }
 
 function decode (id, opts) {
@@ -80,13 +63,14 @@ function decode (id, opts) {
   const urlSafe = !!opts.urlSafe
 
   if (urlSafe) {
-    // need to first convert the last minus to slash,
-    // then the remaining to plus
     id = id.replace(/-([^-]*)$/, '/' + '$1')
       .replace(/-/g, '+')
       .replace(/_/g, '/')
   }
 
+  if (id.length < 22) {
+    return null
+  }
   const lastSlashIndex = id.lastIndexOf('/')
   if (lastSlashIndex === -1) {
     return null
