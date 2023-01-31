@@ -6,7 +6,7 @@
   "files": [
     "hyperid.js",
     "index.d.ts",
-    "uuid.js",
+    "uuid-node.js",
     "uuid-browser.js",
     "test"
   ],
@@ -48,6 +48,6 @@
     "uuid-parse": "^1.1.0"
   },
   "browser": {
-    "./uuid.js": "./uuid-browser.js"
+    "./uuid-node.js": "./uuid-browser.js"
   }
 }
