@@ -1,12 +1,12 @@
 {
   "name": "hyperid",
-  "version": "3.0.1",
+  "version": "3.1.1",
   "description": "Uber-fast unique id generation, for Node.js and the browser",
   "main": "hyperid",
   "files": [
     "hyperid.js",
     "index.d.ts",
-    "uuid.js",
+    "uuid-node.js",
     "uuid-browser.js",
     "test"
   ],
@@ -49,6 +49,6 @@
     "buffer": "^5.2.1"
   },
   "browser": {
-    "./uuid.js": "./uuid-browser.js"
+    "./uuid-node.js": "./uuid-browser.js"
   }
 }
