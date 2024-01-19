@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "typescript": "tsc --project ./test/tsconfig.json",
-    "test": "standard && tape test/test.js test/uniqueness.js | tap-dot && npm run typescript"
+    "test": "standard && tape test/test.js test/uniqueness.js test/buffer.ts | tap-dot && npm run typescript"
   },
   "repository": {
     "type": "git",
@@ -41,11 +41,13 @@
     "standard": "^16.0.3",
     "tap-dot": "^2.0.0",
     "tape": "^5.0.0",
-    "typescript": "^4.3.4"
+    "typescript": "^4.3.4",
+    "proxyquire": "^2.1.3"
   },
   "dependencies": {
     "uuid": "^8.3.2",
-    "uuid-parse": "^1.1.0"
+    "uuid-parse": "^1.1.0",
+    "buffer": "^5.2.1"
   },
   "browser": {
     "./uuid-node.js": "./uuid-browser.js"
