@@ -7,12 +7,10 @@ test('require buffer', function (t) {
 
   const instance = hyperid()
   const id = instance()
-  console.log(id)
   t.ok(id)
 
   proxyquire('../hyperid', { 'buffer': { Buffer: null } });
   const instance2 = hyperid()
   const id2 = instance2()
-  console.log(id2)
   t.ok(id2)
 })
