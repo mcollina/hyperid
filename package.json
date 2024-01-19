@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "typescript": "tsc --project ./test/tsconfig.json",
-    "test": "standard && tape test/test.js test/uniqueness.js test/buffer.ts | tap-dot && npm run typescript"
+    "test": "standard && tape test/test.js test/uniqueness.js test/buffer.js | tap-dot && npm run typescript"
   },
   "repository": {
     "type": "git",
