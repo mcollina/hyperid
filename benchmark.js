@@ -76,7 +76,13 @@ suite.add('hyperid - fixed length, url safe', function () {
 
 suite.on('cycle', cycle)
 
-suite.run()
+suite.on('complete', function () {
+  console.log('\n')
+  console.log(`Fastest is ${this.filter('fastest').map('name')}`)
+  console.log(`Slowest is ${this.filter('slowest').map('name')}`)
+})
+
+suite.run({ async: true })
 
 function cycle (e) {
   console.log(e.target.toString())
