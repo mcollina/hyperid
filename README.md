@@ -6,22 +6,25 @@ Uber-fast unique id generation, for Node.js and the browser.
 Here are the benchmarks:
 
 ```
-crypto.randomUUID x 17,421,022 ops/sec ±1.05% (92 runs sampled)
-hashids process.hrtime x 381,775 ops/sec ±0.22% (95 runs sampled)
-hashids counter x 730,949 ops/sec ±0.23% (97 runs sampled)
-shortid x 34,682 ops/sec ±3.82% (83 runs sampled)
-crypto.random x 313,547 ops/sec ±2.88% (82 runs sampled)
-nid x 1,365,624 ops/sec ±0.07% (96 runs sampled)
-uuid.v4 x 1,313,028 ops/sec ±0.10% (97 runs sampled)
-napiRsUuid.v4 x 536,390 ops/sec ±0.20% (96 runs sampled)
-uuid.v1 x 1,999,272 ops/sec ±0.09% (98 runs sampled)
-nanoid x 3,808,014 ops/sec ±0.33% (95 runs sampled)
-hyperid - variable length x 20,197,843 ops/sec ±0.74% (94 runs sampled)
-hyperid - fixed length x 18,894,869 ops/sec ±0.12% (95 runs sampled)
-hyperid - fixed length, url safe x 20,158,778 ops/sec ±0.54% (94 runs sampled)
+crypto.randomUUID x 12,969,725 ops/sec ±0.88% (91 runs sampled)
+hashids process.hrtime x 419,350 ops/sec ±0.66% (94 runs sampled)
+hashids counter x 819,049 ops/sec ±0.58% (93 runs sampled)
+shortid x 40,820 ops/sec ±2.49% (87 runs sampled)
+crypto.random x 372,773 ops/sec ±2.39% (84 runs sampled)
+nid x 1,614,450 ops/sec ±0.38% (93 runs sampled)
+uuid.v4 x 1,446,051 ops/sec ±0.60% (98 runs sampled)
+napiRsUuid.v4 x 8,676,151 ops/sec ±0.49% (97 runs sampled)
+uuid.v1 x 2,051,072 ops/sec ±0.15% (99 runs sampled)
+nanoid x 4,293,733 ops/sec ±0.31% (97 runs sampled)
+hyperid - variable length x 25,937,129 ops/sec ±1.48% (91 runs sampled)
+hyperid - fixed length x 24,970,478 ops/sec ±1.48% (92 runs sampled)
+hyperid - fixed length, url safe x 25,856,735 ops/sec ±1.93% (92 runs sampled)
+
+Fastest is hyperid - variable length,hyperid - fixed length, url safe
+Slowest is shortid
 ```
 
-_Note:_ Benchmark run with Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz and Node.js v16.3.0
+_Note:_ Benchmark run with Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz and Node.js v22.0.0
 
 As you can see the native `crypto.randomUUID` is almost as fast as hyperid
 on Node.js v16, but not on v14.
