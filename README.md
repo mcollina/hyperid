@@ -67,6 +67,7 @@ If `{ urlSafe: true }` is passed in, the function will generate url safe ids acc
 If `{ startFrom: <int> }` is passed in, the first counter will start from that
 number, which must be between 0 and 2147483647. Fractions are discarded, only the
 integer part matters.
+If `{ maxInt: <int> }` is passed in, the uuid will be re-generated once the *maxInt* is reached. The lesser the *maxInt*, higher the performance because of SMI (a V8 optimization).
 
 ### instance()
 
@@ -75,8 +76,7 @@ Returns an unique id.
 ### instance.uuid
 
 The uuid used to generate the ids, it will change over time.
-It is regenerated every `Math.pow(2, 31) - 1` to keep the integer a SMI
-(a V8 optimization).
+If `maxInt` is provided in options, then it will regenerated every `maxInt`, else it will be regenerated every `Math.pow(2, 31) - 1` to keep the integer a SMI (a V8 optimization). 
 
 ### hyperid.decode(id, [options])
 

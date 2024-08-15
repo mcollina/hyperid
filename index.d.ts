@@ -7,6 +7,7 @@ declare namespace hyperid {
     urlSafe?: boolean
     fixedLength?: boolean
     startFrom?: number
+    maxInt?: number
   }
 
   interface Instance {
