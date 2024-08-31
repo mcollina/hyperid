@@ -131,3 +131,64 @@ test('opts.fixedLength - passed invalid value - throws a friendly error', functi
       : t.fail('this is not the error you\'re looking for')
   }
 })
+
+test('opts.maxInt - pass valid value', function (t) {
+  t.plan(1)
+
+  const instance = hyperid({
+    maxInt: 1
+  })
+
+  let firstId = instance()
+  let secondId = instance()
+
+  // trimming the uuid and comparing for inequality as maxInt is 1.
+  firstId = firstId.substring(0, firstId.length - 1)
+  secondId = secondId.substring(0, secondId.length - 1)
+
+  t.doesNotEqual(firstId, secondId)
+})
+
+test('opts.maxInt - pass Invalid Value, throws friendly error', function (t) {
+  t.plan(1)
+
+  try {
+    hyperid({ maxInt: 'not a number' })
+    t.fail('did not throw an expected error')
+  } catch (e) {
+    e.message.match(/maxInt must be a number. recieved/)
+      ? t.pass('thrown as expected')
+      : t.fail('this is not the error you\'re looking for')
+  }
+})
+
+test('opts.maxInt - pass valid value with startsFrom EDGE CASE', function (t) {
+  t.plan(1)
+
+  const instance = hyperid({
+    startFrom: 99999,
+    maxInt: 100000
+  })
+
+  let firstId = instance()
+  let secondId = instance()
+
+  // trimming the uuid and comparing for inequality as maxInt is 1.
+  firstId = firstId.substring(0, firstId.length - 1)
+  secondId = secondId.substring(0, secondId.length - 1)
+
+  t.doesNotEqual(firstId, secondId)
+})
+
+test.only('opts.maxInt - pass valid value, both startFrom and maxInt are equal, throws friendly error EDGE CASE', function (t) {
+  t.plan(1)
+
+  try {
+    hyperid({ startFrom: 100000, maxInt: 100000 })
+    t.fail('did not throw an expected error')
+  } catch (e) {
+    e.message.match(/startFrom must be a number between 0 and 100000/)
+      ? t.pass('thrown as expected')
+      : t.fail('this is not the error you\'re looking for')
+  }
+})

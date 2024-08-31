@@ -13,6 +13,9 @@ const napiRsUuid = require('@napi-rs/uuid').v4
 const hyperIdSafeUrlInstance = hyperid({
   urlSafe: true
 })
+const hyperIdMaxIntInstance = hyperid({
+  maxInt: 10000 // lesser the maxInt, faster the performance.
+})
 const hyperIdInstance = hyperid()
 
 const suite = new benchmark.Suite()
@@ -72,6 +75,9 @@ suite.add('hyperid - fixed length', function () {
 })
 suite.add('hyperid - fixed length, url safe', function () {
   hyperIdSafeUrlInstance(true)
+})
+suite.add('hyperid - max int', function () {
+  hyperIdMaxIntInstance()
 })
 
 suite.on('cycle', cycle)

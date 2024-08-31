@@ -2,7 +2,6 @@
 
 const uuidv4 = require('./uuid-node')
 const parser = require('uuid-parse')
-const maxInt = Math.pow(2, 31) - 1
 const Buffer = loadBuffer()
 function loadBuffer () {
   const b = require('buffer')
@@ -16,10 +15,13 @@ const base64Padding = Buffer.from('==', 'base64')
 function hyperid (opts) {
   let fixedLength = false
   let urlSafe = false
+  // gaurd if instantiated using boolean for fixedLength or with no args
+  let maxInt = Math.pow(2, 31) - 1
   if (typeof opts === 'boolean') {
     fixedLength = opts
   } else {
     opts = opts || {}
+    maxInt = opts.maxInt || Math.pow(2, 31) - 1
     urlSafe = !!opts.urlSafe
     fixedLength = !!opts.fixedLength
   }
@@ -29,6 +31,8 @@ function hyperid (opts) {
 
   let id = baseId(generate.uuid, urlSafe)
   let count = Math.floor(opts.startFrom || 0)
+
+  if (isNaN(maxInt)) throw new Error(`maxInt must be a number. recieved ${opts.maxInt}`)
 
   if (isNaN(count) || !(maxInt > count && count >= 0)) {
     throw new Error([
