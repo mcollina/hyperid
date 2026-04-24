@@ -180,7 +180,7 @@ test('opts.maxInt - pass valid value with startsFrom EDGE CASE', function (t) {
   t.doesNotEqual(firstId, secondId)
 })
 
-test.only('opts.maxInt - pass valid value, both startFrom and maxInt are equal, throws friendly error EDGE CASE', function (t) {
+test('opts.maxInt - pass valid value, both startFrom and maxInt are equal, throws friendly error EDGE CASE', function (t) {
   t.plan(1)
 
   try {
