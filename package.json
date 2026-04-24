@@ -14,7 +14,8 @@
     "typescript": "tsc --project ./test/tsconfig.json",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
-    "test": "npm run lint && tape test/test.js test/uniqueness.js test/buffer.js | tap-dot && npm run typescript"
+    "test": "npm run lint && tape test/test.js test/uniqueness.js test/buffer.js | tap-dot && npm run typescript",
+    "legacy": "tape test/test.js"
   },
   "repository": {
     "type": "git",
