@@ -1,7 +1,6 @@
 'use strict'
 
 const uuidv4 = require('./uuid-node')
-const parser = require('uuid-parse')
 const Buffer = loadBuffer()
 function loadBuffer () {
   const b = require('buffer')
@@ -62,11 +61,16 @@ function hyperid (opts) {
 }
 
 function baseId (id, urlSafe) {
-  const base64Id = Buffer.concat([Buffer.from(parser.parse(id)), base64Padding]).toString('base64')
+  const base64Id = Buffer.concat([Buffer.from(id.replace(/-/g, ''), 'hex'), base64Padding]).toString('base64')
   if (urlSafe) {
     return base64Id.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '-')
   }
   return base64Id.replace(/=+$/, '/')
+}
+
+function unparseUuid (buf) {
+  const hex = buf.toString('hex')
+  return hex.slice(0, 8) + '-' + hex.slice(8, 12) + '-' + hex.slice(12, 16) + '-' + hex.slice(16, 20) + '-' + hex.slice(20, 32)
 }
 
 function decode (id, opts) {
@@ -93,7 +97,7 @@ function decode (id, opts) {
   }
 
   const result = {
-    uuid: parser.unparse(Buffer.from(uuidPart + '==', 'base64')),
+    uuid: unparseUuid(Buffer.from(uuidPart + '==', 'base64')),
     count: countPart
   }
 
