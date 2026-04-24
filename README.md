@@ -6,28 +6,26 @@ Uber-fast unique id generation, for Node.js and the browser.
 Here are the benchmarks:
 
 ```
-crypto.randomUUID x 12,969,725 ops/sec ±0.88% (91 runs sampled)
-hashids process.hrtime x 419,350 ops/sec ±0.66% (94 runs sampled)
-hashids counter x 819,049 ops/sec ±0.58% (93 runs sampled)
-shortid x 40,820 ops/sec ±2.49% (87 runs sampled)
-crypto.random x 372,773 ops/sec ±2.39% (84 runs sampled)
-nid x 1,614,450 ops/sec ±0.38% (93 runs sampled)
-uuid.v4 x 1,446,051 ops/sec ±0.60% (98 runs sampled)
-napiRsUuid.v4 x 8,676,151 ops/sec ±0.49% (97 runs sampled)
-uuid.v1 x 2,051,072 ops/sec ±0.15% (99 runs sampled)
-nanoid x 4,293,733 ops/sec ±0.31% (97 runs sampled)
-hyperid - variable length x 25,937,129 ops/sec ±1.48% (91 runs sampled)
-hyperid - fixed length x 24,970,478 ops/sec ±1.48% (92 runs sampled)
-hyperid - fixed length, url safe x 25,856,735 ops/sec ±1.93% (92 runs sampled)
+crypto.randomUUID x 36,224,827 ops/sec ±0.96% (89 runs sampled)
+hashids process.hrtime x 856,114 ops/sec ±0.34% (98 runs sampled)
+hashids counter x 1,693,170 ops/sec ±0.79% (91 runs sampled)
+shortid x 1,426,732 ops/sec ±0.54% (95 runs sampled)
+crypto.random x 1,392,232 ops/sec ±0.19% (99 runs sampled)
+nid x 1,837,497 ops/sec ±0.22% (101 runs sampled)
+uuid.v4 x 21,678,972 ops/sec ±0.99% (93 runs sampled)
+napiRsUuid.v4 x 9,610,977 ops/sec ±0.63% (91 runs sampled)
+uuid.v1 x 1,262,795 ops/sec ±0.57% (96 runs sampled)
+nanoid x 6,568,640 ops/sec ±1.22% (95 runs sampled)
+hyperid - variable length x 61,131,099 ops/sec ±1.51% (92 runs sampled)
+hyperid - fixed length x 61,574,593 ops/sec ±1.16% (91 runs sampled)
+hyperid - fixed length, url safe x 60,725,671 ops/sec ±1.86% (94 runs sampled)
+hyperid - max int x 96,960,254 ops/sec ±1.73% (87 runs sampled)
 
-Fastest is hyperid - variable length,hyperid - fixed length, url safe
-Slowest is shortid
+Fastest is hyperid - max int
+Slowest is hashids process.hrtime
 ```
 
-_Note:_ Benchmark run with Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz and Node.js v22.0.0
-
-As you can see the native `crypto.randomUUID` is almost as fast as hyperid
-on Node.js v16, but not on v14.
+_Note:_ Benchmark run with Apple M4 Max and Node.js v24.13.0
 
 ## Install
 
