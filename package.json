@@ -35,7 +35,7 @@
   "devDependencies": {
     "@napi-rs/uuid": "^0.2.0",
     "benchmark": "^2.1.4",
-    "bloomfilter": "^0.0.18",
+    "bloomfilter": "^1.1.0",
     "eslint": "^9.39.4",
     "hashids": "^2.2.8",
     "nanoid": "^3.0.0",
@@ -50,7 +50,7 @@
     "uuid": "^14.0.0"
   },
   "dependencies": {
-    "buffer": "^5.2.1"
+    "buffer": "^6.0.3"
   },
   "browser": {
     "./uuid-node.js": "./uuid-browser.js"
