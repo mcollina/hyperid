@@ -6,20 +6,20 @@ Uber-fast unique id generation, for Node.js and the browser.
 Here are the benchmarks:
 
 ```
-crypto.randomUUID x 36,224,827 ops/sec ±0.96% (89 runs sampled)
-hashids process.hrtime x 856,114 ops/sec ±0.34% (98 runs sampled)
-hashids counter x 1,693,170 ops/sec ±0.79% (91 runs sampled)
-shortid x 1,426,732 ops/sec ±0.54% (95 runs sampled)
-crypto.random x 1,392,232 ops/sec ±0.19% (99 runs sampled)
-nid x 1,837,497 ops/sec ±0.22% (101 runs sampled)
-uuid.v4 x 21,678,972 ops/sec ±0.99% (93 runs sampled)
-napiRsUuid.v4 x 9,610,977 ops/sec ±0.63% (91 runs sampled)
-uuid.v1 x 1,262,795 ops/sec ±0.57% (96 runs sampled)
-nanoid x 6,568,640 ops/sec ±1.22% (95 runs sampled)
-hyperid - variable length x 61,131,099 ops/sec ±1.51% (92 runs sampled)
-hyperid - fixed length x 61,574,593 ops/sec ±1.16% (91 runs sampled)
-hyperid - fixed length, url safe x 60,725,671 ops/sec ±1.86% (94 runs sampled)
-hyperid - max int x 96,960,254 ops/sec ±1.73% (87 runs sampled)
+crypto.randomUUID x 35,347,606 ops/sec ±0.86% (93 runs sampled)
+hashids process.hrtime x 830,101 ops/sec ±0.51% (95 runs sampled)
+hashids counter x 1,657,048 ops/sec ±0.86% (90 runs sampled)
+shortid x 1,391,482 ops/sec ±0.74% (95 runs sampled)
+crypto.random x 1,358,283 ops/sec ±0.51% (95 runs sampled)
+nid x 1,776,272 ops/sec ±0.52% (98 runs sampled)
+uuid.v4 x 21,321,246 ops/sec ±0.64% (94 runs sampled)
+napiRsUuid.v4 x 9,432,514 ops/sec ±0.54% (95 runs sampled)
+uuid.v1 x 1,221,798 ops/sec ±0.52% (97 runs sampled)
+nanoid x 8,810,885 ops/sec ±1.09% (92 runs sampled)
+hyperid - variable length x 62,811,243 ops/sec ±1.14% (93 runs sampled)
+hyperid - fixed length x 61,866,636 ops/sec ±1.29% (93 runs sampled)
+hyperid - fixed length, url safe x 62,014,823 ops/sec ±1.26% (93 runs sampled)
+hyperid - max int x 99,237,132 ops/sec ±1.78% (89 runs sampled)
 
 Fastest is hyperid - max int
 Slowest is hashids process.hrtime
