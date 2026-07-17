@@ -38,3 +38,6 @@ jspm_packages
 
 # Package json
 package-lock.json
+
+# Local AI agent state
+.pi/
