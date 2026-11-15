@@ -58,14 +58,20 @@ test('generating unique ids are correct length when fixedLength set to true (as 
 })
 
 test('decode uuids', function (t) {
-  t.plan(4)
+  t.plan(5)
 
   const instance = hyperid()
+  const other = hyperid()
+
+  t.equal(instance.uuid, null, 'uuid is null before the first id')
+
+  const id = instance()
+  other()
 
   t.ok(instance.uuid, 'uuid exists')
-  t.notEqual(instance.uuid, hyperid().uuid, 'uuid are not equals')
+  t.notEqual(instance.uuid, other.uuid, 'uuid are not equals')
 
-  t.deepEqual(hyperid.decode(instance()), {
+  t.deepEqual(hyperid.decode(id), {
     uuid: instance.uuid,
     count: 0
   }, 'decode')
@@ -191,4 +197,31 @@ test('opts.maxInt - pass valid value, both startFrom and maxInt are equal, throw
       ? t.pass('thrown as expected')
       : t.fail('this is not the error you\'re looking for')
   }
+})
+
+test('the uuid is drawn on first use, not when the instance is created', function (t) {
+  t.plan(4)
+
+  // uuid-node.js takes randomUUID off the crypto module when it loads, so
+  // wrap it first and load a fresh copy of the module.
+  const crypto = require('crypto')
+  const randomUUID = crypto.randomUUID
+  let draws = 0
+  crypto.randomUUID = function () {
+    draws++
+    return randomUUID.call(crypto)
+  }
+  delete require.cache[require.resolve('..')]
+  delete require.cache[require.resolve('../uuid-node')]
+  const freshHyperid = require('..')
+
+  const instance = freshHyperid()
+  t.equal(draws, 0, 'no draw at construction')
+  const id = instance()
+  t.equal(draws, 1, 'one draw on the first id')
+  t.equal(freshHyperid.decode(id).uuid, instance.uuid, 'the id carries the uuid')
+  instance()
+  t.equal(draws, 1, 'no draw on the next id')
+
+  crypto.randomUUID = randomUUID
 })

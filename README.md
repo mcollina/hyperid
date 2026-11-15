@@ -73,7 +73,7 @@ Returns an unique id.
 
 ### instance.uuid
 
-The uuid used to generate the ids, it will change over time.
+The uuid used to generate the ids. It is `null` until the first id is generated, then it will change over time.
 If `maxInt` is provided in options, then it will regenerated every `maxInt`, else it will be regenerated every `Math.pow(2, 31) - 1` to keep the integer a SMI (a V8 optimization). 
 
 ### hyperid.decode(id, [options])
