@@ -25,10 +25,12 @@ function hyperid (opts) {
     fixedLength = !!opts.fixedLength
   }
 
-  generate.uuid = uuidv4()
+  // The uuid is drawn on the first id, not here: a process cloned after
+  // creating an instance (a VM snapshot restore) would otherwise share it.
+  generate.uuid = null
   generate.decode = decode
 
-  let id = baseId(generate.uuid, urlSafe)
+  let id = null
   let count = Math.floor(opts.startFrom || 0)
 
   if (isNaN(maxInt)) throw new Error(`maxInt must be a number. recieved ${opts.maxInt}`)
@@ -43,11 +45,17 @@ function hyperid (opts) {
 
   return generate
 
+  function rebase () {
+    generate.uuid = uuidv4()
+    id = baseId(generate.uuid, urlSafe)
+  }
+
   function generate () {
     let result
-    if (count === maxInt) {
-      generate.uuid = uuidv4()
-      id = baseId(generate.uuid, urlSafe) // rebase
+    if (id === null) {
+      rebase()
+    } else if (count === maxInt) {
+      rebase()
       count = 0
     }
     if (fixedLength) {

@@ -13,7 +13,7 @@ declare namespace hyperid {
   interface Instance {
     (): string
     decode: hyperid.decode
-    uuid: string
+    uuid: string | null
   }
 
   type decode = (id: string, opts?: hyperid.Options) => hyperid.IdObject
